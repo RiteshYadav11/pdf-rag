@@ -20,7 +20,7 @@ const client = new CohereClientV2({
 
 // const client = new ChatCohere({
 //   model: "command-r-plus",
-//   token: "S8RbVgHk6otVJnbH5QVDTMrxFtdSrkltoLVYKLFo"
+//   token: ""
 // });
 
 const storage = multer.diskStorage({
