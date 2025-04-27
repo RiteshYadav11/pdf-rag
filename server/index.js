@@ -6,6 +6,7 @@ import { CohereEmbeddings } from "@langchain/cohere";
 import { QdrantVectorStore } from '@langchain/qdrant';
 import { CohereClientV2 } from "cohere-ai";
 // import { ChatCohere } from '@langchain/cohere';
+import dotenv from 'dotenv'
 
 const queue = new Queue('file-upload-queue',{ connection : {
     host: 'localhost',
@@ -13,7 +14,8 @@ const queue = new Queue('file-upload-queue',{ connection : {
   },
 });
 const client = new CohereClientV2({
-  token: "S8RbVgHk6otVJnbH5QVDTMrxFtdSrkltoLVYKLFo"
+  // token: "",
+  token : process.env.COHERE_API_KEY
 });
 
 // const client = new ChatCohere({
@@ -53,7 +55,8 @@ app.post('/upload/pdf' , upload.single('pdf'), async (req,res)=>{
 app.get('/chat' , async (req , res) => {
   const userQuery = "what is this rPPG";
   const embeddings = new CohereEmbeddings({
-        apiKey: "S8RbVgHk6otVJnbH5QVDTMrxFtdSrkltoLVYKLFo", // In Node.js defaults to process.env.COHERE_API_KEY
+        // apiKey: "", // In Node.js defaults to process.env.COHERE_API_KEY
+        apiKey : process.env.COHERE_API_KEY,
         batchSize: 48, // Default value if omitted is 48. Max value is 96
         model: "embed-english-v3.0",
       });

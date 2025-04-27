@@ -85,7 +85,7 @@ const worker = new Worker(
     const docs = await loader.load();
     console.log("First Done")
     const embeddings = new CohereEmbeddings({
-      // apiKey: "S8RbVgHk6otVJnbH5QVDTMrxFtdSrkltoLVYKLFo", // In Node.js defaults to process.env.COHERE_API_KEY
+      // apiKey: "", // In Node.js defaults to process.env.COHERE_API_KEY
       apiKey : process.env.COHERE_API_KEY,
       batchSize: 48, // Default value if omitted is 48. Max value is 96
       model: "embed-english-v3.0",
